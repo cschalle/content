@@ -1,20 +1,22 @@
 ---
-Title: How to package a desktop application
+title: How to package a desktop application
 subsection: desktop
-
+order: 2
 ---
 
 # {{page.title}}
 
-###System Architecture
-####Linux File Hierarchy
+### System Architecture
+#### Linux File Hierarchy
+
 Applications on Linux are expected to install binary files to /usr/bin, the install architecture independent data files to /usr/share/ and configuration files to /etc. Small temporary files can be stored in /tmp and much larger files in /var/tmp. Per-user configuration is either stored in the users home directory (in ~/.config) or stored in a binary settings store such as dconf.
 See the File Hierarchy Standard[[1](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)] for more information.
 
-###Desktop files
+### Desktop files
+
 Desktop files have been around for a long while now and are used by almost all Linux desktops to provide the basic description of a desktop application that your desktop environment will display. Like a human readable name and an icon. 
 
-So the creation of a desktop file on Linux allows a program to be visible to the graphical environment, e.g. KDE or GNOME Shell. If applications do not have a desktop file they must be manually launched using a terminal emulator. Desktop files must adhere to the Desktop File Specification[[2](https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html#introduction) ] and provide metadata in an ini-style format such as:
+So the creation of a desktop file on Linux allows a program to be visible to the graphical environment, e.g. KDE or GNOME Shell. If applications do not have a desktop file they must be manually launched using a terminal emulator. Desktop files must adhere to the Desktop File Specification[[2](https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html#introduction)] and provide metadata in an ini-style format such as:
 
 - Binary type, typically ‘Application’
 - Program name (optionally localized)
@@ -55,7 +57,8 @@ This tools is available through the desktop-file-utils package, which you can in
 
 	dnf install desktop-file-utils
 
-###AppData Files
+### AppData Files
+
 At least one valid AppData file with the suffix .appdata.xml file should be installed into /usr/share/appdata with a name that matches the name of the .desktop file, e.g. gimp.desktop & gimp.appdata.xml or org.gnome.Nautilus.desktop & org.gnome.Nautilus.appdata.xml.
 
 In the AppData file you should include several 16:9 aspect screenshots along with a compelling translated description made up of multiple paragraphs. 
@@ -121,13 +124,13 @@ A typical (albeit somewhat truncated) AppData file is shown below:
 	  <translation type="gettext">gnome-multi-writer</translation>
 	</component>
 
-####Some Appstream background
+#### Some Appstream background
 
 The AppStream specification is a mature and evolving standard that allows upstream applications to provide metadata such as localized descriptions, screenshots, extra keywords and content ratings for parental control. The basic concept is that the upstream project ships one extra AppData XML file which is used to build a global application catalog called an AppStream file. Over 1000 open source projects now include AppData files, and the software center shipped in Fedora, Ubuntu and OpenSuse is an easy-to-use application filled with useful application metadata. Applications without AppData files are no longer shown which provides quite some incentive to upstream projects wanting visibility in popular desktop environments.
 
 The AppStream specification is an mature and evolving standard that allows upstream applications to provide metadata such as localized descriptions, screenshots, extra keywords and content ratings for parental control. The basic concept is that the upstream project ships one extra AppData XML file which is used to build a global application catalog called an AppStream file. Over 1000 open source projects now include AppData files, and the software center shipped in Fedora, Ubuntu and OpenSuse is now an easy to use application filled with useful application metadata. Applications without AppData files are no longer shown which provides quite some incentive to upstream projects wanting visibility in popular desktop environments.
 
-AppStream[[3](https://www.freedesktop.org/software/appstream/docs/) ] was first introduced in 2008 and since then many people have contributed to the specification. It is being used primarily for application metadata but also now is used for drivers, firmware, input methods and fonts. There are multiple projects producing AppStream metadata and also a number of projects consuming the final XML metadata.
+AppStream[[3](https://www.freedesktop.org/software/appstream/docs/)] was first introduced in 2008 and since then many people have contributed to the specification. It is being used primarily for application metadata but also now is used for drivers, firmware, input methods and fonts. There are multiple projects producing AppStream metadata and also a number of projects consuming the final XML metadata.
 
 When applications are being built as packages by a distribution then the AppStream generation is done automatically, and you do not need to do anything other than installing a .desktop file and an appdata.xml file in the upstream tarball or zip file.
 
@@ -135,7 +138,8 @@ If the application is being built on your own machines or cloud instance then th
 
 NOTE: If you are building packages, make sure that there are not two applications installed with one single package. If this is currently the case split up the package so that there are multiple subpackages or mark one of the .desktop files as NoDisplay=true. Make sure the application-subpackages depend on any -common subpackage and deal with upgrades (perhaps using a metapackage) if you’ve shipped the application before.
 
-###Summary of Package building
+### Summary of Package building
+
 The steps outlined above explain the extra metadata that you need for your application to show up in GNOME Software. This tutorial does not cover how to set up your build system to build these, but both for  Meson and autotools you should be able to find a plethora of examples online. 
 And there are also major resources available to explain how to create a [Fedora RPM](https://fedoraproject.org/wiki/How_to_create_an_RPM_package) or [how to build a Flatpak](http://docs.flatpak.org/en/latest/). You probably also want to tie both the Desktop file and the AppData file into your i18n system so the metadata in them can be translated.
 
@@ -146,11 +150,9 @@ And there are also major resources available to explain how to create a [Fedora 
 
 It is worth nothing here that while this document explains how you can do everything yourself we do generally recommend relying on existing community infrastructure for hosting source code and packages if you can (for instance if your application is open source), as they will save you work and effort over time. For instance putting your sourcecode into the GNOME git will give you free access to the translator community in GNOME and thus increase the chance your application is internationalized significantly. And by building your package in Fedora you can get peer review of your package and free hosting of the resulting package. We are also working on a service that will automatically generate a Flatpack bundle of your application in Fedora, meaning you get a Flatpak version of your application for free as a result.
 
-###Citations
+### Citations
 
 1. [Filesystem Hierarchy Standard: 17th October 2016](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard) 
 2. [Desktop Specification: 17th October 2016](https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html#introduction) 
 3. [AppStream Specification 0.10: 17th October 2016](https://www.freedesktop.org/software/appstream/docs/) 
 4. [SPDX license list](https://spdx.org/licenses/)
-
-[Back to index](how-to-package-a-desktop-application.md) 

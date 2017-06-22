@@ -1,12 +1,12 @@
 ---
 title: Set Up and Host Flatpaks
 subsection: desktop
-
+order: 5
 ---
 
 # {{page.title}}
 
-###Flapak hosting and Metadata
+### Flatpak hosting and Metadata
 
 The flatpak-builder binary generates AppStream metadata automatically when building applications if the appstream-compose tool is installed on the flatpak build machine. Flatpak[1] repositories are exported with a separate ‘appstream’ branch which is automatically downloaded by GNOME Software and no additional work is required when building your application or updating the remote. Adding the remote is enough to add the application to the software center, on the assumption the AppData file is valid.
 
@@ -42,6 +42,7 @@ The best way to make your application and its Flatpak repository available to us
 	Comment=GNOME loves to cook
 
 ### Hosting a Flatpak repository on Github
+
 Github isn't really set up for hosting Flatpak repositories, so we can't guarantee that this will keep working in the future. So once you created a local copy of your repository create a new project on github, enable github pages for the project and point it at the master branch.
 Then use the follow commands to import your repository into github.
 

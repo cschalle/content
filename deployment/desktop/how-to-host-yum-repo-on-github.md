@@ -1,12 +1,13 @@
 ---
 title: Hosting a Yum Repository on Github
 subsection: desktop
-
+order: 4
 ---
 
 # {{page.title}}
 
-####Hosting your Yum repository on Github
+#### Hosting your Yum repository on Github
+
 Github isn't really set up for hosting Yum repositories, but here is a method that currently works. So once you created a local copy of your repository create a new project on github. Then use the follow commands to import your repository into github.
 
 	cd ~/src/myrepository
@@ -32,5 +33,5 @@ Copy that URL as you will need the information from it to create your .repo file
 So on top is your Repo shortname inside the brackets, then a name field with a more extensive name. For the baseurl paste the URL you copied earlier and remove the last bits until you are left with either the 'norach' directory or your platform directory for instance x86_64.
 
 Once you have that file completed put it into /etc/yum.repos.d on your computer and load up GNOME Software. Click on the 'Updates' button in GNOME Software and then on the refresh button in the top left corner to ensure your database is up to date. If everything works as expected you should then be able to do a search in GNOME software and find your new application showing up.
-![Example GNOME Software listing](example-gnome-software-listing.png  "Example GNOME Software listing")
+![Example GNOME Software listing](/content/deployment/desktop/example-gnome-software-listing.png  "Example GNOME Software listing")
 

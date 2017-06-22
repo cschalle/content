@@ -1,18 +1,21 @@
 ---
 title: How to Host Desktop Software
 subsection: desktop
-
+order: 3
 ---
 
 # {{page.title}}
 
-##Setting up hosting infrastructure for your package
+## Setting up hosting infrastructure for your package
+
 We will here explain how you set up a Yum repository for RPM packages that provides the needed metadata. If you are making a Flatpak we recommend skipping ahead to the Flatpak section a bit further down.
 
-###Yum hosting and metadata
+### Yum hosting and metadata
+
 When GNOME Software checks for updates it downloads various metadata files from the server describing the packages available in the repository. GNOME Software can also download AppStream metadata at the same time, allowing add-on repositories to include applications that are visible in the software center.
 
-###Yum hosting and Metadata:
+### Yum hosting and Metadata:
+
 When GNOME Software checks for updates it downloads various metadata files from the server describing the packages available in the repository. GNOME Software can also download AppStream metadata at the same time, allowing add-on repositories to include applications that are visible in the the software center.
 
 In most cases distributors are already building binary RPMS and then building metadata as an additional step by running something like this to generate the repomd files on a directory of packages. The tool for creating the repository metadata is called createrepo_c and is part of the package createrepo_c in Fedora. You can install it by running the command:
