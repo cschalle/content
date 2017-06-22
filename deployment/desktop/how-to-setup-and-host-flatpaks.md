@@ -1,4 +1,9 @@
-[Back to index](how-to-package-a-desktop-application.md) 
+---
+title: Set Up and Host Flatpaks
+section: deployment
+subsection: desktop
+
+---
 
 ###Flapak hosting and Metadata
 
@@ -55,4 +60,3 @@ The flatpak-builder binary generates AppStream metadata automatically when build
 
 2. [Maintaining a Flatpak repository](https://blogs.gnome.org/alexl/2017/02/10/maintaining-a-flatpak-repository/)
 
-[Back to index](how-to-package-a-desktop-application.md) 

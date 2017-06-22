@@ -1,4 +1,9 @@
-[Back to index](how-to-package-a-desktop-application.md) 
+---
+Title: How to package a desktop application
+section: deployment
+subsection: desktop
+
+---
 
 ###System Architecture
 ####Linux File Hierarchy

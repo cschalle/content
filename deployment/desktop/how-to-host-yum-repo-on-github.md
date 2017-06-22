@@ -1,4 +1,9 @@
-[Back to index](how-to-package-a-desktop-application.md) 
+---
+title: Hosting a Yum Repository on Github
+section: deployment
+subsection: desktop
+
+---
 
 ####Hosting your Yum repository on Github
 Github isn't really set up for hosting Yum repositories, but here is a method that currently works. So once you created a local copy of your repository create a new project on github. Then use the follow commands to import your repository into github.
@@ -28,4 +33,3 @@ So on top is your Repo shortname inside the brackets, then a name field with a m
 Once you have that file completed put it into /etc/yum.repos.d on your computer and load up GNOME Software. Click on the 'Updates' button in GNOME Software and then on the refresh button in the top left corner to ensure your database is up to date. If everything works as expected you should then be able to do a search in GNOME software and find your new application showing up.
 ![Example GNOME Software listing](example-gnome-software-listing.png  "Example GNOME Software listing")
 
-[Back to index](how-to-package-a-desktop-application.md) 

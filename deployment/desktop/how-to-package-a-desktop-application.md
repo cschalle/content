@@ -1,3 +1,11 @@
+---
+title: Adding Applications to GNOME Software
+section: deployment
+subsection: desktop
+
+order: 1
+---
+
 #**Adding Applications to the GNOME Software Center**
 
 **Written by Richard Hughes and Christian F.K. Schaller**
