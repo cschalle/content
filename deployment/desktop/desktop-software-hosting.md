@@ -1,9 +1,10 @@
 ---
 title: How to Host Desktop Software
-section: deployment
 subsection: desktop
 
 ---
+
+# {{page.title}}
 
 ##Setting up hosting infrastructure for your package
 We will here explain how you set up a Yum repository for RPM packages that provides the needed metadata. If you are making a Flatpak we recommend skipping ahead to the Flatpak section a bit further down.

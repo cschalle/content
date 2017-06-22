@@ -1,9 +1,10 @@
 ---
 title: Set Up and Host Flatpaks
-section: deployment
 subsection: desktop
 
 ---
+
+# {{page.title}}
 
 ###Flapak hosting and Metadata
 

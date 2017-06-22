@@ -1,9 +1,10 @@
 ---
 Title: How to package a desktop application
-section: deployment
 subsection: desktop
 
 ---
+
+# {{page.title}}
 
 ###System Architecture
 ####Linux File Hierarchy

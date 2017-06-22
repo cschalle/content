@@ -1,9 +1,10 @@
 ---
 title: Hosting a Yum Repository on Github
-section: deployment
 subsection: desktop
 
 ---
+
+# {{page.title}}
 
 ####Hosting your Yum repository on Github
 Github isn't really set up for hosting Yum repositories, but here is a method that currently works. So once you created a local copy of your repository create a new project on github. Then use the follow commands to import your repository into github.

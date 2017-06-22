@@ -6,7 +6,7 @@ subsection: desktop
 order: 1
 ---
 
-#**Adding Applications to the GNOME Software Center**
+# {{page.title}}
 
 **Written by Richard Hughes and Christian F.K. Schaller**
 
