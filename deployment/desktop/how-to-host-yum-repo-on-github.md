@@ -8,7 +8,7 @@ order: 4
 
 #### Hosting your Yum repository on Github
 
-Github isn't really set up for hosting Yum repositories, but here is a method that currently works. So once you created a local copy of your repository create a new project on github. Then use the follow commands to import your repository into github.
+Github isn't really set up for hosting Yum repositories, but here is a method that currently works. Once you've created a local copy of your repository create a new project on Github. Then use the follow commands to import your repository into Github.
 
 	cd ~/src/myrepository
 	git init
@@ -17,11 +17,11 @@ Github isn't really set up for hosting Yum repositories, but here is a method th
 	git remote add origin git@github.com:yourgitaccount/myrepo.git
 	git push -u origin master
 
-Once everything is important go into the github web interface and drill down in the file tree until you find the file called 'repomd.xml' and click on it. You should now see a button the github interface called 'Raw'. Once you click that you get the raw version of the XML file and in the URL bar of your browser you should see a URL looking something like this:
+Once everything is imported, go into the Github web interface and drill down in the file tree until you find the file called 'repomd.xml' and click on it. You should now see a button in the Github interface called 'Raw'. Once you click that you get the raw version of the XML file and in the URL bar of your browser you should see a URL looking something like this:
 
 	https://raw.githubusercontent.com/cschalle/hubyum/master/noarch/repodata/repomd.xml
 
-Copy that URL as you will need the information from it to create your .repo file which is what distributions and users want in order to reach you new repository. To create your .repo file copy this example and edit it to match your data:
+Copy that URL as you will need the information from it to create your '.repo' file which is what distributions and users want in order to reach you new repository. To create your .repo file copy this example and edit it to match your data:
 
 	[remarkable]
 	name=Remarkable Markdown editor software and updates

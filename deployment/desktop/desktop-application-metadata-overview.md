@@ -9,7 +9,7 @@ order: 2
 ### System Architecture
 #### Linux File Hierarchy
 
-Applications on Linux are expected to install binary files to /usr/bin, the install architecture independent data files to /usr/share/ and configuration files to /etc. Small temporary files can be stored in /tmp and much larger files in /var/tmp. Per-user configuration is either stored in the users home directory (in ~/.config) or stored in a binary settings store such as dconf.
+Applications on Linux are expected to install binary files to */usr/bin*, the insatll architecture independent data files to */usr/share/* and configuration files to */etc*. Small temporary files can be stored in */tmp* and much larger files in */var/tmp*. Per-user configuration is either stored in the users home directory (in *~/.config*) or stored in a binary settings store such as dconf.
 See the File Hierarchy Standard[[1](https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard)] for more information.
 
 ### Desktop files
@@ -27,7 +27,7 @@ So the creation of a desktop file on Linux allows a program to be visible to the
 - Keywords (optional, and optionally localized)
 - Short one-line summary (optional, and optionally localized)
 
-The desktop file should be installed into /usr/share/applications for applications that are installed system wide. An example desktop file provided below:
+The desktop file should be installed into */usr/share/applications* for applications that are installed system wide. An example desktop file provided below:
 
 	[Desktop Entry]
 	Type=Application
@@ -43,34 +43,35 @@ The desktop file should be installed into /usr/share/applications for applicatio
 
 *Text 1:  example desktop file for the OpenScad project*
 
-The desktop files are used when creating the software center metadata, and so you should verify that you ship a .desktop file for each built application, and that these keys exist: Name, Comment, Icon, Categories, Keywords and Exec and that desktop-file-validate correctly validates the file. There should also be only one desktop file for each application.
+The desktop files are used when creating the software center metadata, and so you should verify that you ship a *.desktop* file for each built application. Within the file these keys must exist: *Name*, *Comment*, *Icon*, *Categories*, *Keywords* and *Exec*. You should use 'desktop-file-validate' to correctly validate the file. There should also be only one *.desktop* file for each application.
 
-The application icon should be in the PNG format with a transparent background and installed in /usr/share/icons, /usr/share/icons/hicolor/*/apps/*, or /usr/share/${app_name}/icons/*. The icon should be at least 64×64 in size.
+The application icon should be in the PNG format with a transparent background and installed in */usr/share/icons*, _/usr/share/icons/hicolor/*/apps/*_, or _/usr/share/${app_name}/icons/*_. The icon should be at least 64×64 in size.
 
-The file name of the desktop file is also very important, as this is the assigned ‘application ID’. New applications typically use a reverse-DNS style, e.g. org.gnome.Nautilus.desktop but older programs may just use a short name, e.g. gimp.desktop. It is important to note that the file extension is also included as part of the desktop ID.
+The file name of the *.desktop* file is also very important, as this is the assigned ‘application ID’. New applications typically use a reverse-DNS style, e.g. *org.gnome.Nautilus.desktop* but older programs may just use a short name, e.g. *gimp.desktop*. It is important to note that the file extension is also included as part of the desktop ID.
 
 You can verify your desktop file using the command 'desktop-file-validate'.  You just run it like this:
 
 	desktop-file-validate myapp.desktop
 
-This tools is available through the desktop-file-utils package, which you can install on Fedora Workstation using this command
+This tools is available through the 'desktop-file-utils' package, which you can install on Fedora Workstation using this command
 
 	dnf install desktop-file-utils
 
 ### AppData Files
 
-At least one valid AppData file with the suffix .appdata.xml file should be installed into /usr/share/appdata with a name that matches the name of the .desktop file, e.g. gimp.desktop & gimp.appdata.xml or org.gnome.Nautilus.desktop & org.gnome.Nautilus.appdata.xml.
+At least one valid AppData file with the suffix *.appdata.xml* file should be installed into */usr/share/appdata* with a name that matches the name of the *.desktop* file, e.g. *gimp.desktop* and *gimp.appdata.xml* or *org.gnome.Nautilus.desktop* and *org.gnome.Nautilus.appdata.xml*.
 
 In the AppData file you should include several 16:9 aspect screenshots along with a compelling translated description made up of multiple paragraphs. 
 
 In order to make it easier for you to do screenshots in 16:9 format we created a small GNOME Shell extension called 'Screenshot Window Sizer'. You can install it on Fedora Workstation through the Software tool.
-Once it is installed you can resize the window of your application to 16:9 format by focusing it and pressing 'ctrl+alt+s'. It should resize your application window to a perfect 16:9 aspect ratio and let you screenshot it.
 
-Make sure you follow the style guide, which can be tested using the appstream-util command line tool. appstream-util is part of the 'appstream' package in Fedora Workstation.:
+Once it is installed you can resize the window of your application to 16:9 format by focusing it and pressing 'Ctrl+Alt+s'. It should resize your application window to a perfect 16:9 aspect ratio and let you screenshot it.
+
+Make sure you follow the style guide, which can be tested using the 'appstream-util' command line tool. 'appstream-util' is part of the 'appstream' package in Fedora Workstation:
 
 	appstream-util validate foo.appdata.xml
 	
-If you don't already have the appstream-util installed it can be installed using this command on Fedora Workstation:
+If you don't already have 'appstream-util' installed it can be installed using this command on Fedora Workstation:
 
 	dnf install appstream
 
@@ -136,19 +137,15 @@ When applications are being built as packages by a distribution then the AppStre
 
 If the application is being built on your own machines or cloud instance then the distributor will need to generate the AppStream metadata manually. This would for example be the case when internal-only or closed source software is being either used or produced. This document assumes you are currently building RPM packages and exporting yum-style repository metadata for Fedora or RHEL although the concepts are the same for rpm-on-OpenSuse or deb-on-Ubuntu.
 
-NOTE: If you are building packages, make sure that there are not two applications installed with one single package. If this is currently the case split up the package so that there are multiple subpackages or mark one of the .desktop files as NoDisplay=true. Make sure the application-subpackages depend on any -common subpackage and deal with upgrades (perhaps using a metapackage) if you’ve shipped the application before.
+NOTE: If you are building packages, make sure that there are not two applications installed with one single package. If this is currently the case split up the package so that there are multiple subpackages or mark one of the *.desktop* files as *NoDisplay=true*. Make sure the application-subpackages depend on any *-common* subpackage and deal with upgrades (perhaps using a metapackage) if you’ve shipped the application before.
 
 ### Summary of Package building
 
-The steps outlined above explain the extra metadata that you need for your application to show up in GNOME Software. This tutorial does not cover how to set up your build system to build these, but both for  Meson and autotools you should be able to find a plethora of examples online. 
-And there are also major resources available to explain how to create a [Fedora RPM](https://fedoraproject.org/wiki/How_to_create_an_RPM_package) or [how to build a Flatpak](http://docs.flatpak.org/en/latest/). You probably also want to tie both the Desktop file and the AppData file into your i18n system so the metadata in them can be translated.
+The steps outlined above explain the extra metadata that you need for your application to show up in GNOME Software. This tutorial does not cover how to set up your build system to build these, but both for  Meson and autotools you should be able to find a plethora of examples online.
 
-It is worth nothing here that while this document explains how you can do everything yourself, we do generally recommend relying on existing community infrastructure for hosting source code and packages if you can (for instance if your application is open source), as they will save you work and effort over time. For instance putting your source code on GNOME's git will make it easy for the GNOME translation teams to work on your application and thus increase the chance that it gets translated in many languages. And by building your package in Fedora you can get peer review of your package and free hosting of the resulting package. We are also working on a service that will automatically generate a Flatpack bundle of your application in Fedora, meaning you get a Flatpak version of your application with no extra effort.
+There are also major resources available to explain how to create a [Fedora RPM](https://fedoraproject.org/wiki/How_to_create_an_RPM_package) or [how to build a Flatpak](http://docs.flatpak.org/en/latest/). You probably also want to tie both the Desktop file and the AppData file into your i18n system so the metadata in them can be translated.
 
-So the steps outlined above explains the extra metadata you need to have your application show up in GNOME Software. This tutorial does not cover how to set up your build system to build these, but both for  Meson and autotools you should be able to find a long range of examples online. 
-And there are also major resources available to explain how to create a [Fedora RPM](https://fedoraproject.org/wiki/How_to_create_an_RPM_package) or [how to build a Flatpak](http://docs.flatpak.org/en/latest/). You probably also want to tie both the Desktop file and the AppData file into your i18n system so the metadata in them can be translated.
-
-It is worth nothing here that while this document explains how you can do everything yourself we do generally recommend relying on existing community infrastructure for hosting source code and packages if you can (for instance if your application is open source), as they will save you work and effort over time. For instance putting your sourcecode into the GNOME git will give you free access to the translator community in GNOME and thus increase the chance your application is internationalized significantly. And by building your package in Fedora you can get peer review of your package and free hosting of the resulting package. We are also working on a service that will automatically generate a Flatpack bundle of your application in Fedora, meaning you get a Flatpak version of your application for free as a result.
+It is worth noting here that, while this document explains how you can do everything yourself, we generally recommend relying on existing community infrastructure for hosting source code and packages if you can (for instance, if your application is open source). They will save you work and effort over time. For example, putting your source code on GNOME git will make it easy for the GNOME translation teams to work on your application and thus increase the chance that it gets translated in many languages. And by building your package in Fedora you can get peer review of your package and free hosting of the resulting package. We are also working on a service that will automatically generate a Flatpak bundle of your application in Fedora, meaning you get a Flatpak version of your application with no extra effort.
 
 ### Citations
 

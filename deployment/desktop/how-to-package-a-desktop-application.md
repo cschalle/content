@@ -14,17 +14,18 @@ order: 1
 ## Abstract
 
 Traditionally we have had little information about Linux applications before they have been installed. With the creation of a software center we require access to rich set of metadata about an application before it is deployed so it it can be displayed to the user and easily installed.
-This document is meant to be a guide for developers who wish to get their software appearing in the Software stores in Fedora Workstation and other distributions. Without the metadata described in this document your application is likely to go undiscovered by many or most linux users, but by reading this document you should be able to relatively quickly prepare you application.
+
+This document is meant to be a guide for developers who wish to get their software appearing in the Software stores in Fedora Workstation and other distributions. Without the metadata described in this document your application is likely to go undiscovered by many or most Linux users. By reading this document you should be able to prepare your application more easily.
 
 ![GNOME Software](/content/deployment/desktop/steam-gnome-software.png  "Example of Steam listing in GNOME Software")
 
 ### Introduction to the technical details
 
-Installing applications on Linux has traditionally involved copying binary and data files into a directory and just writing a single desktop file into a per-user or per-system directory so that it shows up in the desktop environment.  In this document we refer to applications as graphical programs, rather than other system add-on components like drivers and codecs. This document will explain why the extra metadata is required and what is required for an application to be visible in the software center. We will try to document how to do this regardless of if you choose to pakcage your application as a rpm package or as a flatpak bundle. The current rules is a combination of various standards that have evolved over the years and will will try to summarize and explain them here, going from bottom to top. 
+Installing applications on Linux has traditionally involved copying binary and data files into a directory, and writing a single desktop file into a per-user or per-system directory so it shows up in the desktop environment.  In this document we refer to applications as graphical programs, rather than other system add-on components like drivers and codecs. This document explains why the extra metadata is required, and what is required for an application to be visible in the software center. We will try to document how to do this regardless of if you choose to package your application as a rpm package or as a flatpak bundle. The current rules are a combination of various standards that have evolved over the years and we'll try to summarize and explain them here, going from bottom to top. 
 
 1. An introduction to [Desktop Application metadata](desktop-application-metadata-overview.html)
 
-2. Special steps to [ setup and create desktop yum repo](desktop-software-hosting.html) 
+2. Special steps to [setup and create desktop yum repo](desktop-software-hosting.html) 
 
 3. Instructions for [how to host a Yum repo on github](how-to-host-yum-repo-on-github.html)
 
