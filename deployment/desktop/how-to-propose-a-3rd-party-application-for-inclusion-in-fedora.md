@@ -4,9 +4,7 @@ subsection: desktop
 order: 6
 ---
 
-# {{page.title}}
-
-### Getting it into Fedora Workstation
+# Propose a Third Party App to Include in Fedora
 
 You now have your repository created and ready for users to connect to it. The final step is getting your repository added to Fedora Workstation.
 
